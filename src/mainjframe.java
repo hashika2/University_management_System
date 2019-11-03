@@ -37,46 +37,46 @@ public class mainjframe extends javax.swing.JFrame {
     Statement state = null;
     ResultSet rs=null;
     String url="jdbc:mysql://localhost:3306/se_students";
-    int id;
+    String id;
        
     DbConnector dbc= new DbConnector();
        
-    public int setValues(String username,String password){
-         try{
-          Class.forName("com.mysql.jdbc.Driver"); 
-          Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
-           System.out.println("connected");
-           Statement state = con.createStatement();
-           
-           String qery="select * from all_students ";
-           ResultSet rs = state.executeQuery(qery);
-            id = rs.getInt("id");
-           while(rs.next()){
-               String user = rs.getString("username");
-               String pass =rs.getString("password");
-               
-               
-               if(username.equals(user) && password.equals(pass))
-                   new Home().setVisible(true);
-                   
-               
-                   
-               else{
-                   JOptionPane.showMessageDialog(null,"error");
-               }
-               
-           }
-           
-           
-       }catch(Exception e){
-           JOptionPane.showMessageDialog(null,"jnsd");
-       }
-        return id ;
+    public void setValues(String username){
+//         try{
+//          Class.forName("com.mysql.jdbc.Driver"); 
+//          Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
+//           System.out.println("connected");
+//           Statement state = con.createStatement();
+//           
+//           String qery="select * from all_students ";
+//           ResultSet rs = state.executeQuery(qery);
+//            //id = rs.getInt("id");
+//           while(rs.next()){
+//               String user = rs.getString("username");
+//               String pass =rs.getString("password");
+//               
+//               
+//               if(username.equals(user) && password.equals(pass))
+//                   new Home().setVisible(true);
+//                   
+//               
+//                   
+//               else{
+//                   JOptionPane.showMessageDialog(null,"error");
+//               }
+//               
+//           }
+//           
+//           
+//       }catch(Exception e){
+//           JOptionPane.showMessageDialog(null,"jnsd");
+//       }
+       // return id ;
     }   
     
     public mainjframe() {
         
-        this.setUndecorated(true);//remove titie bar
+        //this.setUndecorated(true);//remove titie bar
         this.setAlwaysOnTop(true);//this interface is aways on top
         this.setResizable(false);//not resizebe
         this.setVisible(true);
@@ -109,6 +109,9 @@ public class mainjframe extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtpassword = new javax.swing.JPasswordField();
+        course = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +147,15 @@ public class mainjframe extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("         student Details");
 
+        course.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 0, 0));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("jLabel5");
+
         javax.swing.GroupLayout detailsLayout = new javax.swing.GroupLayout(details);
         details.setLayout(detailsLayout);
         detailsLayout.setHorizontalGroup(
@@ -155,14 +167,18 @@ public class mainjframe extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtpassword, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(detailsLayout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                            .addComponent(jButton2))
-                        .addComponent(txtusername, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                        .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtpassword, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(detailsLayout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addComponent(txtusername, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addComponent(course, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(224, Short.MAX_VALUE))
         );
         detailsLayout.setVerticalGroup(
@@ -182,7 +198,13 @@ public class mainjframe extends javax.swing.JFrame {
                 .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addGap(49, 49, 49)
+                .addComponent(course)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addContainerGap(120, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,8 +238,43 @@ public class mainjframe extends javax.swing.JFrame {
          String username = txtusername.getText();
          String password =txtpassword.getText();
        
-        mainjframe mfr =new mainjframe();
-            mfr.setValues(username,password);
+//        mainjframe mfr =new mainjframe();
+//            mfr.setValues(username,password);
+
+           try{
+            Class.forName("com.mysql.jdbc.Driver"); 
+            Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
+            System.out.println("connected");
+            Statement state = con.createStatement();
+           
+           String qery="select * from all_students s, courses c where s.s_id = c.s_id";
+           ResultSet rs = state.executeQuery(qery);
+            //id = rs.getInt("id");
+           while(rs.next()){
+               String user = rs.getString("s.username");
+               String pass = rs.getString("s.password");
+               
+              
+               if(username.equals(user) && password.equals(pass)){
+                    new Home().setVisible(true); 
+                    course.setText(rs.getString("s_id"));
+                    jLabel4.setText(rs.getString("c.courseName"));
+                    jLabel5.setText(rs.getString("lecturer"));
+                    id= rs.getString("s_id");
+                    setValues(id);
+                   
+               }
+                else{
+                   JOptionPane.showMessageDialog(null,"error");
+               }
+               
+           }
+           
+           
+       }catch(Exception e){
+           JOptionPane.showMessageDialog(null,"jnsd");
+       }
+
           
        
        
@@ -240,12 +297,15 @@ public class mainjframe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel course;
     private javax.swing.JPanel details;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
