@@ -183,15 +183,23 @@ public class mainjframe extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout detailsLayout = new javax.swing.GroupLayout(details);
@@ -207,18 +215,17 @@ public class mainjframe extends javax.swing.JFrame {
                 .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(detailsLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(course, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, detailsLayout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 244, Short.MAX_VALUE)
-                            .addComponent(jButton2))
-                        .addComponent(txtpassword, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtusername, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(detailsLayout.createSequentialGroup()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2))
+                    .addComponent(txtpassword)
+                    .addComponent(txtusername))
                 .addGap(108, 108, 108)
                 .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -326,24 +333,24 @@ public class mainjframe extends javax.swing.JFrame {
             System.out.println("connected");
             Statement state = con.createStatement();
            
-          String qery="select * from all_students s, courses c where s.s_id = c.s_id";
-             String q= "select * from student";
-           ResultSet rs = state.executeQuery(q);
+          String qery="select c.courseName,c.lecturer from student_course st, courses c,all_students s where st.c_id = c.courseid and s.s_id=st.s_no";
+           
+           ResultSet rs = state.executeQuery(qery);
             //id = rs.getInt("id");
            while(rs.next()){
                String user = rs.getString("s.username");
                String pass = rs.getString("s.password");
                
-              
+            
                if(username.equals(user) && password.equals(pass)){
                     new Home().setVisible(true); 
                    
-                    course.setText(rs.getString("s_id"));
-                    jLabel5.setText(rs.getString("c.courseName").toString());
-                    jLabel6.setText(rs.getString("lecturer"));
-                    id= rs.getString("s_id");
+//                    course.setText(rs.getString("s_id"));
+//                  
+//     
+//                    id= rs.getString("s_id");
                     setValues(id);
-                    jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+                      jTable1.setModel(DbUtils.resultSetToTableModel(rs));
               }
                else{
                   JOptionPane.showMessageDialog(null,"error");
