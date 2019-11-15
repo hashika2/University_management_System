@@ -41,39 +41,8 @@ public class mainjframe extends javax.swing.JFrame {
     String id;
        
     DbConnector dbc= new DbConnector();
-       
-    public void setValues(String username){
-//         try{
-//          Class.forName("com.mysql.jdbc.Driver"); 
-//          Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
-//           System.out.println("connected");
-//           Statement state = con.createStatement();
-//           
-//           String qery="select * from all_students ";
-//           ResultSet rs = state.executeQuery(qery);
-//            //id = rs.getInt("id");
-//           while(rs.next()){
-//               String user = rs.getString("username");
-//               String pass =rs.getString("password");
-//               
-//               
-//               if(username.equals(user) && password.equals(pass))
-//                   new Home().setVisible(true);
-//                   
-//               
-//                   
-//               else{
-//                   JOptionPane.showMessageDialog(null,"error");
-//               }
-//               
-//           }
-//           
-//           
-//       }catch(Exception e){
-//           JOptionPane.showMessageDialog(null,"jnsd");
-//       }
-       // return id ;
-    }   
+    
+      
     
     public mainjframe() {
         
@@ -89,8 +58,7 @@ public class mainjframe extends javax.swing.JFrame {
 //                int ysize =(int) tk.getScreenSize().getHeight();
 //                this.setSize(xsize,ysize);
         
-        
-        
+       
     }
 
     /**
@@ -147,9 +115,9 @@ public class mainjframe extends javax.swing.JFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(51, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Webp.net-resizeimage.png"))); // NOI18N
-        jLabel3.setText("         student Details");
+        jLabel3.setText(" Student Details");
 
         course.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -167,20 +135,21 @@ public class mainjframe extends javax.swing.JFrame {
                         .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(detailsLayout.createSequentialGroup()
-                                .addGap(869, 869, 869)
+                                .addGap(881, 881, 881)
                                 .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, detailsLayout.createSequentialGroup()
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 257, Short.MAX_VALUE)
-                                    .addComponent(jButton2))
-                                .addComponent(txtpassword, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtusername, javax.swing.GroupLayout.Alignment.LEADING))))
+                            .addGroup(detailsLayout.createSequentialGroup()
+                                .addGap(54, 54, 54)
+                                .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(detailsLayout.createSequentialGroup()
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton2))))))
                     .addGroup(detailsLayout.createSequentialGroup()
                         .addGap(179, 179, 179)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -191,15 +160,15 @@ public class mainjframe extends javax.swing.JFrame {
             .addGroup(detailsLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel3)
-                .addGap(46, 46, 46)
-                .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(56, 56, 56)
+                .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtusername, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                    .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addGroup(detailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -207,21 +176,18 @@ public class mainjframe extends javax.swing.JFrame {
                 .addComponent(course)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(details, javax.swing.GroupLayout.PREFERRED_SIZE, 701, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(details, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(details, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -246,7 +212,7 @@ public class mainjframe extends javax.swing.JFrame {
        
 //        mainjframe mfr =new mainjframe();
 //            mfr.setValues(username,password);
-
+            
            try{
             Class.forName("com.mysql.jdbc.Driver"); 
             Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
@@ -262,13 +228,21 @@ public class mainjframe extends javax.swing.JFrame {
            while(rs.next()){
                String user = rs.getString("username");
                String pass = rs.getString("password");
-               int id= rs.getInt("id");
+               String id= rs.getString("id");
+               
+              
                
             
                if(username.equals(user) && password.equals(pass)){
                    Home home =new Home();
                    home.getCourses(id);
                    home.setVisible(true); 
+                    char []ch =new char[id.length()];
+                    if(ch[0]=='L'){
+                        System.out.println("he is a teacher");
+                    }else{
+                        System.out.println("he is a students");
+                    }
                    System.out.println("haii");
                    isUserExist = true;
                    break;

@@ -33,16 +33,17 @@ public class Home extends javax.swing.JFrame {
         initComponents();
        
     }
-    public void getCourses(int id){
-        String qery="select c.courseName,c.lecturer from student_course st, courses c where st.c_id = c.courseid and st.s_no="+id; 
+    public void getCourses(String id){
+         String qery="select c.courseName,c.lecturer,c.courseid from student_course st, courses c where st.c_id = c.courseid and st.s_no='id'"; 
          try{
-            Class.forName("com.mysql.jdbc.Driver"); 
-          Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
+           Class.forName("com.mysql.jdbc.Driver"); 
+           Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
            System.out.println("connected");
+          
            Statement state = con.createStatement();
            rs = state.executeQuery(qery);
            
-           //String qery="select courseName from courses";
+           
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
            
            while(rs.next()){
@@ -182,8 +183,8 @@ public class Home extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel2)
                 .addGap(62, 62, 62)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(85, 85, 85)
                 .addComponent(jLabel6)
                 .addGap(22, 22, 22)
                 .addComponent(jLabel5)
