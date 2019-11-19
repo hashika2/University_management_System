@@ -241,9 +241,20 @@ public class mainjframe extends javax.swing.JFrame {
                     if(ch[0]=='L'){
                         System.out.println("he is a teacher");
                     }else{
-                        System.out.println("he is a students");
+                        if(ch[6]=='3'){
+                            System.out.println("he is a forth batch");
+                        }
+                        if(ch[6]=='4'){
+                            System.out.println("he is a third batch");
+                        }
+                        if(ch[6]=='5'){
+                            System.out.println("he is a second batch");
+                        }
+                        if(ch[6]=='6'){
+                            System.out.println("he is a first batch");
+                        }
                     }
-                   System.out.println("haii");
+                   
                    isUserExist = true;
                    break;
                     

@@ -93,9 +93,9 @@ public class department extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(68, 68, 68)
                 .addComponent(jButton1)
-                .addGap(49, 49, 49)
+                .addGap(54, 54, 54)
                 .addComponent(jButton2)
-                .addGap(39, 39, 39)
+                .addGap(34, 34, 34)
                 .addComponent(jButton3)
                 .addGap(33, 33, 33)
                 .addComponent(jButton4)
@@ -127,7 +127,7 @@ public class department extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
+        new year().setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     /**

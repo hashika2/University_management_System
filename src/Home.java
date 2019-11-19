@@ -34,7 +34,7 @@ public class Home extends javax.swing.JFrame {
        
     }
     public void getCourses(String id){
-         String qery="select c.courseName,c.lecturer,c.courseid from student_course st, courses c where st.c_id = c.courseid and st.s_no='id'"; 
+         String qery="select c.courseName,c.lecturer,c.courseid from student_course st, courses c where st.c_id = c.courseid and st.s_no='" + id +"'"; 
          try{
            Class.forName("com.mysql.jdbc.Driver"); 
            Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
@@ -95,7 +95,7 @@ public class Home extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("My Courses");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Commerce and Management Studies", "Humanities", "Medicine ", "Science", "Social Sciences", "Computing and Technology", "Graduate Studies " }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Department of Chemistry", "Department of Industrial Management", "Department of Mathematics", "Department of Physics", "Department of Microbiology", "Department of Statistics & Computer Science", "Department of Zoology and Environmental Management", "Software Engineering Teaching Unit" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -107,7 +107,7 @@ public class Home extends javax.swing.JFrame {
         jLabel6.setText("All Categories");
 
         jLabel5.setForeground(new java.awt.Color(255, 51, 51));
-        jLabel5.setText("FACULTIES");
+        jLabel5.setText("FACULTY OF SCIENCE");
 
         jLabel7.setForeground(new java.awt.Color(255, 51, 51));
         jLabel7.setText("Units & Centres");
@@ -226,8 +226,8 @@ public class Home extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
        String name= jComboBox1.getSelectedItem().toString();
-       if(name=="Science"){
-           new department().setVisible(true);
+       if(name=="Software Engineering Teaching Unit"){
+           new year().setVisible(true);
        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
