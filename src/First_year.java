@@ -1,4 +1,7 @@
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 /*
@@ -13,9 +16,11 @@ import javax.swing.JOptionPane;
  */
 public class First_year extends javax.swing.JFrame {
 
-    /**
-     * Creates new form First_year
-     */
+    java.sql.Connection con=null;
+    PreparedStatement pst=null;
+    Statement state = null;
+    ResultSet rs=null;
+    String url="jdbc:mysql://localhost:3306/se_students";
     public First_year() {
         initComponents();
     }
@@ -259,6 +264,8 @@ public class First_year extends javax.swing.JFrame {
        }catch(Exception e){
            JOptionPane.showMessageDialog(null,"error");
        }
+       
+       
     }//GEN-LAST:event_jButton12ActionPerformed
 
     /**

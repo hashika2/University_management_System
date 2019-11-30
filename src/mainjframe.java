@@ -7,6 +7,9 @@
 
 import com.connector.DbConnector;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.*;
+import java.awt.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -60,7 +63,10 @@ public class mainjframe extends javax.swing.JFrame {
         
        
     }
-
+    public void close(){
+        WindowEvent winClosingEvent = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(winClosingEvent);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -223,20 +229,19 @@ public class mainjframe extends javax.swing.JFrame {
            String lgoinQuery="select username,password,id from login";
            ResultSet rs = state.executeQuery(lgoinQuery);
             
-            
+          
            boolean isUserExist = false;
            while(rs.next()){
                String user = rs.getString("username");
                String pass = rs.getString("password");
                String id= rs.getString("id");
                
-              
-               
-            
                if(username.equals(user) && password.equals(pass)){
+                  
                    Home home =new Home();
                    home.getCourses(id);
                    home.setVisible(true); 
+                   dispose(); 
                     char []ch =new char[id.length()];
                     if(ch[0]=='L'){
                         System.out.println("he is a teacher");
