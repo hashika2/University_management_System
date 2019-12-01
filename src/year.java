@@ -173,6 +173,7 @@ public class year extends javax.swing.JFrame {
        Home home =new Home(); 
        home.getCourses("SE/2016/024");
         home.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
