@@ -238,14 +238,20 @@ public class mainjframe extends javax.swing.JFrame {
                
                if(username.equals(user) && password.equals(pass)){
                   
-                   Home home =new Home();
-                   home.getCourses(id);
-                   home.setVisible(true); 
-                   dispose(); 
+                  //convert String to array
                     char []ch =new char[id.length()];
+                    for (int i = 0; i < id.length(); i++) { 
+                        ch[i] = id.charAt(i); 
+                     } 
                     if(ch[0]=='L'){
                         System.out.println("he is a teacher");
+                        new photo().setVisible(true);
                     }else{
+                         System.out.println("he is a student");
+                            Home home =new Home();
+                            home.getCourses(id);
+                            home.setVisible(true); 
+                            dispose(); 
                         if(ch[6]=='3'){
                             System.out.println("he is a forth batch");
                         }
@@ -258,6 +264,7 @@ public class mainjframe extends javax.swing.JFrame {
                         if(ch[6]=='6'){
                             System.out.println("he is a first batch");
                         }
+                           
                     }
                    
                    isUserExist = true;
