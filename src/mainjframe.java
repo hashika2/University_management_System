@@ -40,7 +40,7 @@ public class mainjframe extends javax.swing.JFrame {
     PreparedStatement pst=null;
     Statement state = null;
     ResultSet rs=null;
-    String url="jdbc:mysql://localhost:3306/se_students";
+   // String url="jdbc:mysql://localhost:3306/se_students";
     String id;
        
     DbConnector dbc= new DbConnector();
@@ -220,8 +220,8 @@ public class mainjframe extends javax.swing.JFrame {
 //            mfr.setValues(username,password);
             
            try{
-            Class.forName("com.mysql.jdbc.Driver"); 
-            Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
+           // Class.forName("com.mysql.jdbc.Driver"); 
+            con= (Connection) new SetConnection().getConnection();
             System.out.println("connected");
             Statement state = con.createStatement();
            
@@ -251,6 +251,8 @@ public class mainjframe extends javax.swing.JFrame {
                             Home home =new Home();
                             home.getCourses(id);
                             home.setVisible(true); 
+                            year y=new year();
+                            y.loginId=id;
                             dispose(); 
                         if(ch[6]=='3'){
                             System.out.println("he is a forth batch");
@@ -272,12 +274,13 @@ public class mainjframe extends javax.swing.JFrame {
                     
                      
               }
+               
               
            }
            if(!isUserExist){
              
                   JOptionPane.showMessageDialog(null,"error");
-           
+            
            }
            
            

@@ -23,7 +23,7 @@ public class Home extends javax.swing.JFrame {
     PreparedStatement pst=null;
     Statement state = null;
     ResultSet rs=null;
-    String url="jdbc:mysql://localhost:3306/se_students";
+    //String url="jdbc:mysql://localhost:3306/se_students";
     
 
 //   mainjframe mjf =new mainjframe();
@@ -36,13 +36,12 @@ public class Home extends javax.swing.JFrame {
     public void getCourses(String id){
          String qery="select c.courseName,c.lecturer,c.courseid from student_course st, courses c where st.c_id = c.courseid and st.s_no='" + id +"'"; 
          try{
-           Class.forName("com.mysql.jdbc.Driver"); 
-           Connection con=(Connection)DriverManager.getConnection(url, "root","");//get the connection
+            con= (Connection) new SetConnection().getConnection();
            System.out.println("connected");
           
            Statement state = con.createStatement();
            rs = state.executeQuery(qery);
-           
+             System.out.println(rs);
            
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
            
@@ -241,6 +240,7 @@ public class Home extends javax.swing.JFrame {
        String name= jComboBox1.getSelectedItem().toString();
        if(name=="Software Engineering Teaching Unit"){
            new year().setVisible(true);
+           dispose();
        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
