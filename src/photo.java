@@ -41,7 +41,7 @@ public class photo extends javax.swing.JFrame {
    public void setDataTable(){
         String qery="select * from login"; 
          try{
-            con= (Connection) new SetConnection().getConnection();
+           con= (Connection) new SetConnection().getConnection();
            System.out.println("connected");
           
            Statement state = con.createStatement();
