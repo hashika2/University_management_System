@@ -1,4 +1,5 @@
 
+import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,9 +34,10 @@ public class Profile extends javax.swing.JFrame {
         initComponents();
     }
     public void setImage(String id){
-        String query="select username,id,profile from login where id='" + id +"'";
+       
         try{
-            con= (Connection) new SetConnection().getConnection();
+           String query="select username,id,profile from login where id='" + id +"'";
+           con= (Connection) new SetConnection().getConnection();
            System.out.println("connected");
           
            Statement state = con.createStatement();
@@ -44,13 +46,24 @@ public class Profile extends javax.swing.JFrame {
            
          
            
-           while(rs.next()){
-              prfl=rs.getString("profile");
+           if(rs.next()){
+                byte[] img =rs.getBytes("profile");
+                ImageIcon image=new ImageIcon(img);
+                Image im =image.getImage();
+                Image myImg=im.getScaledInstance(profile.getWidth(), profile.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon newImage =new ImageIcon(myImg);
+                profile.setIcon(newImage);
+                
+              
+              //prfl=rs.getString("profile");
            }
-           new Profile().setImage(id);
+           else{
+               System.out.println("error");
+           }
+           //new Profile().setImage(id);
             
         }catch(Exception e){
-            
+            JOptionPane.showMessageDialog(null,"no data");
         }
          JFileChooser chooser =new JFileChooser();
          chooser.showOpenDialog(null);
@@ -66,6 +79,8 @@ public class Profile extends javax.swing.JFrame {
         profile = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         path = new javax.swing.JLabel();
+        show = new javax.swing.JButton();
+        id = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +96,13 @@ public class Profile extends javax.swing.JFrame {
 
         path.setText("jLabel2");
 
+        show.setText("jButton2");
+        show.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -93,11 +115,15 @@ public class Profile extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(profile, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(path, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(path, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
+                        .addComponent(show)
+                        .addGap(18, 18, 18)
+                        .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(248, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -108,7 +134,10 @@ public class Profile extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(profile, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(show)
+                    .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(path)
                 .addContainerGap(66, Short.MAX_VALUE))
@@ -155,12 +184,46 @@ public class Profile extends javax.swing.JFrame {
       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
+         try{
+           String query="select username,id,profile from login where id='"+id.getText()+"'";
+           con= (Connection) new SetConnection().getConnection();
+           System.out.println("connected");
+          
+           Statement state = con.createStatement();
+           rs = state.executeQuery(query);
+             System.out.println(rs);
+           
+         
+           
+           if(rs.next()){
+                String img =rs.getString("profile");
+                ImageIcon image=new ImageIcon(img);
+                Image im =image.getImage();
+                Image myImg=im.getScaledInstance(profile.getWidth(), profile.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon newImage =new ImageIcon(myImg);
+                profile.setIcon(newImage);
+                
+              
+              //prfl=rs.getString("profile");
+           }
+           else{
+               System.out.println("error");
+           }
+           //new Profile().setImage(id);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null,"no data");
+        }
+    }//GEN-LAST:event_showActionPerformed
+
     public static void main(String args[]) {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             
             public void run() {
                 new Profile().setVisible(true);
+               // new Profile().setImage("SE/2016/024");
             }
         });
     }
@@ -168,10 +231,12 @@ public class Profile extends javax.swing.JFrame {
      String filename =null;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel path;
     private javax.swing.JLabel profile;
+    private javax.swing.JButton show;
     // End of variables declaration//GEN-END:variables
 }
