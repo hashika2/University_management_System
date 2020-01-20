@@ -23,6 +23,7 @@ public class Home extends javax.swing.JFrame {
     PreparedStatement pst=null;
     Statement state = null;
     ResultSet rs=null;
+    String id=null;
     //String url="jdbc:mysql://localhost:3306/se_students";
     
 
@@ -36,6 +37,7 @@ public class Home extends javax.swing.JFrame {
     public void getCourses(String id){
          String qery="select c.courseName,c.lecturer,c.courseid from student_course st, courses c where st.c_id = c.courseid and st.s_no='" + id +"'"; 
          try{
+             id=id;
             con= (Connection) new SetConnection().getConnection();
             System.out.println("connected");
           
@@ -48,7 +50,7 @@ public class Home extends javax.swing.JFrame {
            while(rs.next()){
               
            }
-           new Profile().setImage(id);
+           //new Profile().setImage(id);
             
         }catch(Exception e){
             
@@ -262,7 +264,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        new Profile().setVisible(true);
+       Profile pf= new Profile();
+             pf.setVisible(true);
+             pf.setImage(id);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

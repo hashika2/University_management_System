@@ -7,7 +7,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -37,7 +40,18 @@ public class photo extends javax.swing.JFrame {
     public photo() {
         initComponents();
     }
-
+    public  void showTable() throws SQLException{
+         con= (Connection) new SetConnection().getConnection();
+          PreparedStatement ps =con.prepareStatement("select * from pdf");
+          ResultSet rs =ps.executeQuery();
+          DefaultTableModel tm =(DefaultTableModel)jTable2.getModel();
+          tm.setRowCount(0);
+          
+          while(rs.next()){
+              System.out.println(rs);
+              jTable2.setModel(DbUtils.resultSetToTableModel(rs));
+          }
+    }
    public void setDataTable(){
         String qery="select * from login"; 
          try{
@@ -321,9 +335,15 @@ public class photo extends javax.swing.JFrame {
     public static void main(String args[]) {
         photo ph=new photo();
         ph.setDataTable();
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new photo().setVisible(true);
+                try {
+                    ph.showTable();
+                } catch (SQLException ex) {
+                    Logger.getLogger(photo.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
