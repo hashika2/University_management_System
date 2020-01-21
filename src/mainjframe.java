@@ -5,6 +5,7 @@
  */
 
 
+//import connection.SetConnection;
 import com.connector.DbConnector;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
@@ -17,8 +18,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import loginmainfrome.DOBperations;
-import loginmainfrome.userinputs;
+//import loginmainfrome.DOBperations;
+//import loginmainfrome.userinputs;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -207,14 +208,14 @@ public class mainjframe extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        userinputs in=new userinputs();
-        in.setVisible(true);
-        in.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        userinputs in=new userinputs();
+//        in.setVisible(true);
+//        in.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        DOBperations db=new DOBperations();
+        //DOBperations db=new DOBperations();
          String username = txtusername.getText();
          String password =txtpassword.getText();
        
@@ -281,7 +282,7 @@ public class mainjframe extends javax.swing.JFrame {
            }
            if(!isUserExist){
              
-                  JOptionPane.showMessageDialog(null,"error");
+                  JOptionPane.showMessageDialog(null,"please Enter correct userName and Password");
             
            }
            
