@@ -28,14 +28,6 @@ import net.proteanit.sql.DbUtils;
  */
 public class mainjframe extends javax.swing.JFrame {
     
-    
-
-   
-
-    /**
-     * Creates new form mainjframe
-     */
-    
 
     Connection con=null;
     PreparedStatement pst=null;
@@ -228,10 +220,14 @@ public class mainjframe extends javax.swing.JFrame {
             System.out.println("connected");
             Statement state = con.createStatement();
            
-           
-           String lgoinQuery="select username,password,id from login";
-           ResultSet rs = state.executeQuery(lgoinQuery);
+            Queries q=new Queries();
+            ;
             
+            ResultSet rs=q.login();
+           
+//           String lgoinQuery="select username,password,id from login";
+//           ResultSet rs = state.executeQuery(lgoinQuery);
+//            
           
            boolean isUserExist = false;
            while(rs.next()){
