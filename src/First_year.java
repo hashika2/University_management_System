@@ -351,7 +351,7 @@ public class First_year extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
        
         try {
-            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler "+table.get("dataStructu"));
+            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler "+table.get("lecturenote 1"));
         } catch (IOException ex) {
             Logger.getLogger(First_year.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -374,7 +374,7 @@ public class First_year extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         try {
-            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler "+table.get("pmat"));
+            Runtime.getRuntime().exec("rundll32 url.dll, FileProtocolHandler "+table.get("lecturenote 2"));
         } catch (IOException ex) {
             Logger.getLogger(First_year.class.getName()).log(Level.SEVERE, null, ex);
         }

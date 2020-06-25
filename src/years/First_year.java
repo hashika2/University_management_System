@@ -280,7 +280,7 @@ public class First_year extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
        try{
-             con=new SetConnection().getConnection();
+             con= new SetConnection().getConnection();
             state = con.createStatement();
            String PdfPath="select pdf,pdf_id from pdf";
            ResultSet rs =state.executeQuery(PdfPath);

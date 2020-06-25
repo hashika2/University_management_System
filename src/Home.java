@@ -37,7 +37,7 @@ public class Home extends javax.swing.JFrame {
     }
     public void getCourses(String id){
         
-        Queries q=new Queries();
+        Queries q = new Queries();
        rs= q.setStudentCourses(id);
          //String qery="select c.courseName,c.lecturer,c.courseid from student_course st, courses c where st.c_id = c.courseid and st.s_no='" + id +"'"; 
          try{

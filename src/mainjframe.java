@@ -20,7 +20,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 //import loginmainfrome.DOBperations;
 //import loginmainfrome.userinputs;
-import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -221,9 +220,8 @@ public class mainjframe extends javax.swing.JFrame {
             Statement state = con.createStatement();
            
             Queries q=new Queries();
-            ;
             
-            ResultSet rs=q.login();
+            ResultSet rs = q.login();
            
 //           String lgoinQuery="select username,password,id from login";
 //           ResultSet rs = state.executeQuery(lgoinQuery);
@@ -233,18 +231,18 @@ public class mainjframe extends javax.swing.JFrame {
            while(rs.next()){
                String user = rs.getString("username");
                String pass = rs.getString("password");
-               String id= rs.getString("id");
+               String id= rs.getString("studentId");
                
                if(username.equals(user) && password.equals(pass)){
                   
                   //convert String to array
-                    char []ch =new char[id.length()];
+                    char []ch = new char[id.length()];
                     for (int i = 0; i < id.length(); i++) { 
                         ch[i] = id.charAt(i); 
                      } 
                     if(ch[0]=='L'){
                         System.out.println("he is a teacher");
-                        new photo().setVisible(true);
+                        new LecturePanel().setVisible(true);
                     }else{
                          System.out.println("he is a student");
                             Home home =new Home();

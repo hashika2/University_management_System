@@ -4,7 +4,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import net.proteanit.sql.DbUtils;
 
 
 public class Queries {
@@ -20,7 +19,7 @@ public class Queries {
             Statement state = con.createStatement();
            
            
-           String lgoinQuery="select username,password,id from login";
+           String lgoinQuery = "select username,password,studentId from login";
            ResultSet rs = state.executeQuery(lgoinQuery);
            return rs;
     }
