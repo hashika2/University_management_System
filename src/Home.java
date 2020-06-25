@@ -37,8 +37,9 @@ public class Home extends javax.swing.JFrame {
     }
     public void getCourses(String id){
         
+        this.id=id;
         Queries q = new Queries();
-       rs= q.setStudentCourses(id);
+        rs= q.setStudentCourses(id);
          //String qery="select c.courseName,c.lecturer,c.courseid from student_course st, courses c where st.c_id = c.courseid and st.s_no='" + id +"'"; 
          try{
 //             id=id;
@@ -254,23 +255,25 @@ public class Home extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
        String name= jComboBox1.getSelectedItem().toString();
-       if(name=="Software Engineering Teaching Unit"){
+       if(name == "Software Engineering Teaching Unit"){
            new year().setVisible(true);
            dispose();
        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       new mainjframe().setVisible(true);
+       new Login().setVisible(true);
        year y = new year();
        
        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       Profile pf= new Profile();
-             pf.setVisible(true);
+       Profile pf = new Profile();
+             System.out.println(id);
              pf.setImage(id);
+             pf.setVisible(true);
+           
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
