@@ -3,6 +3,7 @@ import java.awt.Image;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,7 +38,6 @@ public class Profile extends javax.swing.JFrame {
         try{
            String query="select username,address,s_id,email from all_students where s_id='" + id +"'";
            con= (Connection) new SetConnection().getConnection();
-           System.out.println("connected");
           
            Statement state = con.createStatement();
            rs = state.executeQuery(query);
@@ -67,10 +67,10 @@ public class Profile extends javax.swing.JFrame {
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"no data");
         }
-         JFileChooser chooser =new JFileChooser();
-         chooser.showOpenDialog(null);
-         File f =chooser.getSelectedFile();
-         profile.setIcon(new ImageIcon(prfl));
+//         JFileChooser chooser =new JFileChooser();
+//         chooser.showOpenDialog(null);
+//         File f =chooser.getSelectedFile();
+//         profile.setIcon(new ImageIcon(prfl));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -223,18 +223,30 @@ public class Profile extends javax.swing.JFrame {
       else{
           profile.setIcon(new ImageIcon(f.toString()));
       }
-      filename =f.getAbsolutePath();
+      filename = f.getAbsolutePath();
       path.setText(filename);
       
       try{
-          File image =new File(filename);
-          FileInputStream fis =new FileInputStream(image);
-          ByteArrayOutputStream bos =new ByteArrayOutputStream();
-          byte[] buf =new byte[1024];
-            for(int readNum; (readNum=fis.read(buf))!= -1;){
-              bos.write(buf,0,readNum);
-          }
-            photo =bos.toByteArray();
+//          File image =new File(filename);
+//          FileInputStream fis =new FileInputStream(image);
+//          ByteArrayOutputStream bos =new ByteArrayOutputStream();
+//          byte[] buf =new byte[1024];
+//            for(int readNum; (readNum=fis.read(buf))!= -1;){
+//              bos.write(buf,0,readNum);
+//          }
+//            photo =bos.toByteArray();
+        Connection connection = null;
+        PreparedStatement statement = null;
+        FileInputStream inputStream = null;
+        File image = new File("C:/Users/Click/Pictures/FB_IMG_1509886395445.jpg");
+            inputStream = new FileInputStream(image);
+ 
+            statement = connection.prepareStatement("insert into all_students(image)" + "values(?)");
+            statement.setString(1, "Honda Car");
+            statement.setBinaryStream(2, (InputStream) inputStream, (int)(image.length()));
+ 
+            statement.executeUpdate();
+            JOptionPane.showMessageDialog(null, "save");
       }catch(Exception e){
         JOptionPane.showMessageDialog(null,e);
       }

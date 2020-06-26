@@ -269,10 +269,9 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       Profile pf = new Profile();
-             System.out.println(id);
-             pf.setImage(id);
+       Profile pf = new Profile();            
              pf.setVisible(true);
+             pf.setImage(id);
            
     }//GEN-LAST:event_jButton2ActionPerformed
 
