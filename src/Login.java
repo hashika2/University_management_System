@@ -198,7 +198,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtusernameActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+    new Register().setVisible(true);
 //        userinputs in=new userinputs();
 //        in.setVisible(true);
 //        in.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
