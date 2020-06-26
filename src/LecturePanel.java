@@ -285,15 +285,15 @@ public class LecturePanel extends javax.swing.JFrame {
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
         try{
-             Class.forName("com.mysql.jdbc.Driver"); 
+            Class.forName("com.mysql.jdbc.Driver"); 
             java.sql.Connection con=(java.sql.Connection)DriverManager.getConnection(url, "root","");//get the connection
             System.out.println("connected");
             Statement state = con.createStatement();
            
            //String image = jLabel2.getText();
            //image =image.replace("\\", filename);
-           String insert="insert into pdf (pdf_id,name,description,pdf) VALUES (?,?,?,?) ";
-           pst=con.prepareStatement(insert);
+           String insert = "insert into pdf (pdf_id,name,description,pdf) VALUES (?,?,?,?)";
+           pst = con.prepareStatement(insert);
            pst.setString(1, ID.getText());
            pst.setString(2, name.getText());
            pst.setString(3, description.getText());
