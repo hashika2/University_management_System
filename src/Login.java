@@ -1,3 +1,7 @@
+
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -25,7 +29,7 @@ import javax.swing.JOptionPane;
  *
  * @author Hashika maduranga
  */
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame implements Authentication{
     
 
     Connection con=null;
@@ -46,7 +50,7 @@ public class Login extends javax.swing.JFrame {
         this.setResizable(false);//not resizebe
         this.setVisible(true);
         initComponents();
-        
+
 //        Toolkit tk = Toolkit.getDefaultToolkit();
 //        //ok i'll make this more understandable
 //                int xsize =(int) tk.getScreenSize().getWidth();
@@ -207,6 +211,7 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //DOBperations db=new DOBperations();
+        
          String username = txtusername.getText();
          String password =txtpassword.getText();
        
@@ -219,7 +224,7 @@ public class Login extends javax.swing.JFrame {
             System.out.println("connected");
             Statement state = con.createStatement();
            
-            Queries q=new Queries();
+            Queries q = new Queries();
             
             ResultSet rs = q.login();
            
@@ -285,26 +290,12 @@ public class Login extends javax.swing.JFrame {
            e.printStackTrace();
        }
 
-          
-       
-       
-      
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-       
-      
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Login().setVisible(true);
-                
-            }
-            
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel course;
@@ -318,4 +309,11 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void authlogin() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ 
+       
+    }
 }

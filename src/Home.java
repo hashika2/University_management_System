@@ -1,5 +1,6 @@
 
 //import connection.SetConnection;
+//import auth.Login;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -24,7 +25,7 @@ public class Home extends javax.swing.JFrame {
     PreparedStatement pst=null;
     Statement state = null;
     ResultSet rs=null;
-    String id=null;
+    String id = null;
     //String url="jdbc:mysql://localhost:3306/se_students";
     
 

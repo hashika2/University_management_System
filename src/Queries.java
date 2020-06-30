@@ -17,23 +17,23 @@ public class Queries {
         con= (Connection) new SetConnection().getConnection();
             System.out.println("connected");
             Statement state = con.createStatement();
-           
+             
            
            String lgoinQuery = "select username,password,studentId from login";
            ResultSet rs = state.executeQuery(lgoinQuery);
            return rs;
     }
-    public String register(String name,String email,String password,String username,String address,String phone) throws SQLException{
+    public String register(String name,String email,String password,String username,String address,String phone,String stdNo) throws SQLException{
       con = (Connection) new SetConnection().getConnection();
       Statement state = con.createStatement();
-      String registerQuery = "insert into all_students(name,email,password,username,address,phone) values('"+name+"','"+email+"','"+password+"','"+username+"','"+address+"','"+phone+"') ";
+      String registerQuery = "insert into all_students(name,email,password,username,address,phone) values('"+name+"','"+email+"','"+password+"','"+username+"','"+address+"','"+phone+"','"+stdNo+"')";
 //      pst.setString(1,name);
 //      pst.setString(2, email);
 //      pst.setString(3, password);
 //      pst.setString(4, username);
 //      pst.setString(5, address);
 //      pst.setString(6, phone);
-      pst.executeUpdate(registerQuery);
+      pst.execute();
       //ResultSet rs = state.executeQuery(registerQuery);
       return "success";  
     }

@@ -1,10 +1,14 @@
 
+
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,8 +19,9 @@ import javax.swing.JOptionPane;
  *
  * @author Click
  */
-public class Register extends javax.swing.JFrame {
-
+public class Register extends javax.swing.JFrame implements Authentication {
+    Connection con = null;
+    PreparedStatement pst=null;
     /**
      * Creates new form Register
      */
@@ -274,18 +279,35 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         String name1 = name.getText();
+         
+        new Register().authlogin();
+        
+        String name1 = name.getText();
          String email1 = email.getText();
          String password1 = password.getText();
          String phone1 = phone.getText();
          String address1 = address.getText();
          String username1 = username.getText();
+         String stdNo= stdno.getText();
          
          Queries q = new Queries();
+         
         try {
-            String rs = q.register(name1,email1,password1,phone1,address1,username1);
-            System.out.println(rs);
+            //String rs = q.register(name1,email1,password1,phone1,address1,username1,stdNo);
+            con = (Connection) (java.sql.Connection) new SetConnection().getConnection();
+           Statement state = con.createStatement();
+            String registerQuery = "insert into all_students(name,email,password,username,address,phone) values('"+name1+"','"+email1+"','"+password1+"','"+username1+"','"+address1+"','"+phone1+"','"+stdNo+"')";
+            //System.out.println(rs);
+            pst = con.prepareStatement(registerQuery);
+            pst.execute();
             JOptionPane.showMessageDialog(null, "save");
+            name.setText("");
+            email.setText("");
+            password.setText("");
+            phone.setText("");
+            email.setText("");
+            username.setText("");
+            address.setText("");
         } catch (SQLException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -355,4 +377,10 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField stdno;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void authlogin() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("register");
+    }
 }
