@@ -14,6 +14,7 @@ public class AuthFactoryPattern {
       AuthFactory auth = new AuthFactory();
       
       Authentication a = auth.setAuth("login");
+      a.authlogin();
         //new Login();
     }
 }

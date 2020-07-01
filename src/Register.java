@@ -295,7 +295,7 @@ public class Register extends javax.swing.JFrame implements Authentication {
         try {
             //String rs = q.register(name1,email1,password1,phone1,address1,username1,stdNo);
             con = (Connection) (java.sql.Connection) new SetConnection().getConnection();
-           Statement state = con.createStatement();
+            Statement state = con.createStatement();
             String registerQuery = "insert into all_students(name,email,password,username,address,phone) values('"+name1+"','"+email1+"','"+password1+"','"+username1+"','"+address1+"','"+phone1+"','"+stdNo+"')";
             //System.out.println(rs);
             pst = con.prepareStatement(registerQuery);

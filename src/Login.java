@@ -253,8 +253,8 @@ public class Login extends javax.swing.JFrame implements Authentication{
                             Home home =new Home();
                             home.getCourses(id);
                             home.setVisible(true); 
-                            year y=new year();
-                            y.loginId=id;
+                            year y = new year(id);
+                            y.loginId = id;
                             dispose(); 
                         if(ch[6]=='3'){
                             System.out.println("he is a forth batch");
@@ -270,7 +270,6 @@ public class Login extends javax.swing.JFrame implements Authentication{
                         }
                            
                     }
-                   
                    isUserExist = true;
                    break;
                     
@@ -314,6 +313,6 @@ public class Login extends javax.swing.JFrame implements Authentication{
     public void authlogin() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
  
-       
+        System.out.println("LOGGED");
     }
 }

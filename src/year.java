@@ -9,10 +9,11 @@
  * @author Hashika
  */
 public class year extends javax.swing.JFrame {
-
-   String loginId="";
-    public year() {
+   
+   String loginId = "";
+    public year(String id) {
         initComponents();
+        this.loginId = id;
     }
     
 
@@ -159,13 +160,15 @@ public class year extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      new First_year().setVisible(true);
+     First_year fy = new First_year();
+     fy.setVisible(true);
+     fy.getId(loginId);
       dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
        Home home =new Home(); 
-       home.getCourses(loginId);
+       home.getCourses(this.loginId);
         home.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -198,11 +201,7 @@ public class year extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new year().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
